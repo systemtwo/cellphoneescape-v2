@@ -5,8 +5,10 @@
 #include "BaseObj.h"
 class Ball : public BaseObj {
 	public:
+		Ball();
 		void draw(sf::RenderWindow*);
 		void update(float);
 	private:
+		sf::CircleShape circle;
 };
 #endif

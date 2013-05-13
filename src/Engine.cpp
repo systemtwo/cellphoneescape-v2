@@ -46,6 +46,7 @@ void Engine::draw(sf::RenderWindow* window) {
 }
 
 void Engine::update() {
+	states[currState]->update(dt.asSeconds());
 	return;
 }
 

@@ -17,10 +17,6 @@ int main() {
 	eng.setState(0);
 	eng.addObj(b);
 	
-	
-
-
-
 	while(window.isOpen()) {
 		//Loop thru events
 		sf::Event event;
@@ -37,12 +33,5 @@ int main() {
 		window.display();
 
 	}
-
-
-
-	
-
-
-
 	return 0;
 }
