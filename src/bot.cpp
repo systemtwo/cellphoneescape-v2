@@ -1,6 +1,6 @@
 #include <iostream>
 #include "ball.h"
-#include "bot.h"
+#include "Bot.h"
 Bot::Bot() {
 	y=100;
 	x=100;

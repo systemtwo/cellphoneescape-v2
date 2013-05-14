@@ -4,8 +4,8 @@
 
 #include "Engine.h"
 #include "State.h"
-#include "ball.h"
-#include "bot.h"
+#include "Ball.h"
+#include "Bot.h"
 
 int main() {
 	sf::RenderWindow window(sf::VideoMode(800, 600, 32), "Cell Phone Escape");

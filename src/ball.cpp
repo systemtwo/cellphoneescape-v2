@@ -1,4 +1,4 @@
-#include "ball.h"
+#include "Ball.h"
 void Ball::draw(sf::RenderWindow* window) {
 	sf::CircleShape circle;
 	circle.setRadius(10);
