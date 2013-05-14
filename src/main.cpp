@@ -5,6 +5,7 @@
 #include "Engine.h"
 #include "State.h"
 #include "ball.h"
+#include "bot.h"
 
 int main() {
 	sf::RenderWindow window(sf::VideoMode(800, 600, 32), "Cell Phone Escape");
@@ -15,7 +16,8 @@ int main() {
 	Ball* b = new Ball();
 	eng.addState(testState);
 	eng.setState(0);
-	eng.addObj(b);
+
+	eng.addObj(new Bot());
 	
 	
 
@@ -33,6 +35,7 @@ int main() {
 		//Game Loop
 		window.clear();
 		eng.update();
+		std::cout << "One loop";
 		eng.draw(&window);
 		window.display();
 
