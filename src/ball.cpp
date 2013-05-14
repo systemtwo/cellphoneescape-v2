@@ -1,12 +1,15 @@
 #include "Ball.h"
+Ball::Ball() {
+	circle.setPosition(0,0);
+}
 void Ball::draw(sf::RenderWindow* window) {
-	sf::CircleShape circle;
 	circle.setRadius(10);
-	circle.setPosition(100,100);
 	window->draw(circle);
 }
 
 void Ball::update(float dt) {
+	circle.move(dt*10, dt*10);
+	
 	return;
 }
 

@@ -19,10 +19,6 @@ int main() {
 
 	eng.addObj(new Bot());
 	
-	
-
-
-
 	while(window.isOpen()) {
 		//Loop thru events
 		sf::Event event;
@@ -40,12 +36,5 @@ int main() {
 		window.display();
 
 	}
-
-
-
-	
-
-
-
 	return 0;
 }
