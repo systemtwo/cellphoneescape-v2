@@ -8,7 +8,7 @@
 
 int main() {
 	sf::RenderWindow window(sf::VideoMode(800, 600, 32), "Cell Phone Escape");
-	Engine eng = Engine::getInstance();
+	Engine& eng = Engine::getInstance();
 
 	State* testState = new State();
 

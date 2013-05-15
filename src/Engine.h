@@ -9,12 +9,18 @@
 
 class Engine {
 	public:
-		static Engine& getInstance();
+		static Engine& getInstance() {
+			static Engine e;
+			return e;
+		}
 		void draw(sf::RenderWindow*);
 		void update();
 		void addState (State*);
 		void setState(int);
 		void addObj (BaseObj*);
+		int countObjs();
+		void setDummy(int i);
+		int getDummy();
 
 
 	private:
@@ -22,6 +28,7 @@ class Engine {
 		sf::Clock clock; //the timer
 		std::vector<State* > states;
 		int currState;
+		int dummy;
 
 		Engine();
 

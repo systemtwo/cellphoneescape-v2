@@ -1,15 +1,14 @@
 #include "Engine.h"
 Engine::Engine() {
 	currState = -1;
-
 	return;
 }
 
-
+/*
 Engine& Engine::getInstance() {
 	static Engine e;
 	return e;
-}
+}*/
 
 void Engine::addState(State* s) {
 	states.push_back(s);
@@ -51,5 +50,14 @@ void Engine::update() {
 }
 
 	
+int Engine::countObjs() {
+	return states.size();
+}
 
+void Engine::setDummy(int i) {
+	dummy = i;
+}
 
+int Engine::getDummy() {
+	return dummy;
+}
