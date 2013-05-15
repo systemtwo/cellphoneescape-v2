@@ -6,25 +6,27 @@
 #include <SFML/System.hpp>
 
 #include "State.h"
+#include "Ball.h"
 
 class Engine {
 	public:
-		static Engine& getInstance();
+		static Engine* getInstance();
 		void draw(sf::RenderWindow*);
 		void update();
-		void addState (State*);
+		int addState (State*); // Returns length of states
 		void setState(int);
+		State* getState();
 		void addObj (BaseObj*);
 
 
+
 	private:
+		static bool instanceFlag;
+		static Engine* engine;
 		sf::Time dt; //To be fed into update()s
 		sf::Clock clock; //the timer
 		std::vector<State* > states;
 		int currState;
-
 		Engine();
-
-
 };
 #endif

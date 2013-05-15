@@ -6,20 +6,32 @@ Engine::Engine() {
 }
 
 
-Engine& Engine::getInstance() {
-	static Engine e;
-	return e;
+bool Engine::instanceFlag = false;
+Engine* Engine::engine = NULL;
+Engine* Engine::getInstance() {
+	if(! instanceFlag)
+    {
+        engine = new Engine();
+        instanceFlag = true;
+        return engine;
+    }
+    else
+    {
+        return engine;
+    }
 }
 
-void Engine::addState(State* s) {
+int Engine::addState(State* s) {
 	states.push_back(s);
-	return;
+	return states.size();
 }
 
 void Engine::setState(int stateNum) {
 	currState = stateNum;
 }
-
+State* Engine::getState() {
+	return states[currState];
+}
 void Engine::addObj(BaseObj* bo) {
 	if (states.size() == 0) {
 		return;

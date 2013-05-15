@@ -5,8 +5,7 @@
 #include "BaseObj.h"
 class Bot : public BaseObj {
 	public:
-		int x;
-		int y;
+		float x, y, speed;
 
 		Bot();
 		void draw(sf::RenderWindow*);
