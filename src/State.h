@@ -5,6 +5,7 @@
 #include <string>
 #include <SFML/Graphics.hpp>
 #include "BaseObj.h"
+#include "Ball.h"
 class State {
 	public:
 		virtual void draw(sf::RenderWindow*);

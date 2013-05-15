@@ -4,15 +4,14 @@ Engine::Engine() {
 	return;
 }
 
-/*
 Engine& Engine::getInstance() {
 	static Engine e;
 	return e;
-}*/
+}
 
-void Engine::addState(State* s) {
+int Engine::addState(State* s) {
 	states.push_back(s);
-	return;
+	return states.size();
 }
 
 void Engine::setState(int stateNum) {
@@ -33,6 +32,7 @@ void Engine::draw(sf::RenderWindow* window) {
 		return;
 	}
 	//Sort by zlevel then draw
+	//^ is now state responsibility
 	
 
 	states[currState]->draw(window);
@@ -54,10 +54,3 @@ int Engine::countObjs() {
 	return states.size();
 }
 
-void Engine::setDummy(int i) {
-	dummy = i;
-}
-
-int Engine::getDummy() {
-	return dummy;
-}

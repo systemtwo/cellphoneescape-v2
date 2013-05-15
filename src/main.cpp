@@ -4,17 +4,19 @@
 
 #include "Engine.h"
 #include "State.h"
-#include "ball.h"
+#include "Ball.h"
 
 int main() {
 	sf::RenderWindow window(sf::VideoMode(800, 600, 32), "Cell Phone Escape");
 	Engine& eng = Engine::getInstance();
+
 
 	State* testState = new State();
 
 	Ball* b = new Ball();
 	eng.addState(testState);
 	eng.setState(0);
+	b = new Ball();
 	eng.addObj(b);
 	
 	while(window.isOpen()) {
