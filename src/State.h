@@ -8,12 +8,13 @@
 #include "Ball.h"
 class State {
 	public:
+		State();
 		virtual void draw(sf::RenderWindow*);
 		virtual void update(float dt);
 		virtual void addObj(BaseObj*);
 		std::string getName();
 		
-	private:
+	protected:
 		std::vector <BaseObj*> objs;
 		std::string name;
 		void cleanDestroyedObj();

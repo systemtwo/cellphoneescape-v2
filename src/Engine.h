@@ -15,14 +15,13 @@ class Engine {
 		void update();
 		int addState (State*); // Returns length of states
 		void setState(int);
-		State* getState();
+		int findState(std::string);
 		void addObj (BaseObj*);
 		int countObjs();
 
 
 
 	private:
-		static bool instanceFlag;
 		static Engine* engine;
 		sf::Time dt; //To be fed into update()s
 		sf::Clock clock; //the timer

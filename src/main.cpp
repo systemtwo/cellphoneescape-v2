@@ -4,6 +4,7 @@
 
 #include "Engine.h"
 #include "State.h"
+#include "GameState.h"
 #include "Ball.h"
 
 int main() {
@@ -11,13 +12,10 @@ int main() {
 	Engine& eng = Engine::getInstance();
 
 
-	State* testState = new State();
+	State* gameState = new GameState();
 
-	Ball* b = new Ball();
-	eng.addState(testState);
-	eng.setState(0);
-	b = new Ball();
-	eng.addObj(b);
+	eng.addState(gameState);
+	eng.setState(eng.findState("GameState"));
 	
 	while(window.isOpen()) {
 		//Loop thru events

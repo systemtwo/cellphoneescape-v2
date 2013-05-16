@@ -10,9 +10,21 @@ Engine& Engine::getInstance() {
 }
 
 int Engine::addState(State* s) {
+	//Returns the position of the newly added state
 	states.push_back(s);
-	return states.size();
+	return states.size() - 1 ;
 }
+
+int Engine::findState(std::string name) {
+	//Find the position of a state by name
+	for (int i = 0; i < states.size(); i++) {
+		if (states[i]->getName().compare(name) == 0) {
+			return i;
+		}
+	}
+	return -1;
+}
+	
 
 void Engine::setState(int stateNum) {
 	currState = stateNum;
