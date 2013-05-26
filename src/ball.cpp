@@ -8,6 +8,13 @@ Ball::Ball() {
 }
 void Ball::draw(sf::RenderWindow* window) {
 	window->draw(circle);
+	//Debug (Draw bounding box)
+	sf::RectangleShape r(sf::Vector2f(10,10));
+	r.setPosition(x,y);
+	r.setFillColor(sf::Color(255,0,0,128));
+	window->draw(r);
+	//End debug
+
 }
 
 void Ball::update(float dt) {
@@ -45,6 +52,19 @@ std::vector<BoundingBox> Ball::getBoundingBoxes() {
 }
 
 void Ball::onCollide(BaseObj* obj, Direction dir) {
-	std::cout << dir << std::endl;
+	switch (dir) {
+		case UP:
+			std::cout << "UP" << std::endl;
+			break;
+		case DOWN:
+			std::cout << "DOWN" << std::endl;
+			break;
+		case RIGHT:
+			std::cout << "RIGHT" << std::endl;
+			break;
+		case LEFT:
+			std::cout << "LEFT" << std::endl;
+			break;
+	}
 }
 

@@ -22,7 +22,7 @@ void BaseObj::draw(sf::RenderWindow* window) {
 	return;
 }
 
-void BaseObj::onCollide(BaseObj* b, int direction) {
+void BaseObj::onCollide(BaseObj* b, Direction direction) {
 	return;
 }
 
