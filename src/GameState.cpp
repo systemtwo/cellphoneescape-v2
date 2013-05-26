@@ -5,9 +5,9 @@
 
 GameState::GameState() {
 	name = "GameState";
-	addObj(new LevelManager());
 	addObj(new Ball());
 	addObj(new Square(100, 100));
+	addObj(new LevelManager());
 	return;
 }
 

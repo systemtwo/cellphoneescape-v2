@@ -3,8 +3,6 @@
 Square::Square(int _x, int _y) {
 	x = _x;
 	y = _y;
-	h = 10;
-	w = 10;
 	rect.setPosition(x, y);
 	rect.setSize(sf::Vector2f(w, h));
 	return;

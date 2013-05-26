@@ -24,6 +24,7 @@ void Ball::draw(sf::RenderWindow* window) {
 void Ball::update(float dt) {
 	circle.move(dt*10, dt*10);
 	Engine &e= Engine::getInstance();
+	//std::cout << e.countStateObjs();
 
 
 

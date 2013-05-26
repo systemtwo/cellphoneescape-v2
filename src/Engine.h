@@ -19,6 +19,7 @@ class Engine {
 		void addObj (BaseObj*);
 		int countStates();
 		void setShowCollisions(bool);
+		int countStateObjs();
 
 
 

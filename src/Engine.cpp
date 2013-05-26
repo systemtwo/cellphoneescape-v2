@@ -32,8 +32,10 @@ void Engine::setState(int stateNum) {
 
 void Engine::addObj(BaseObj* bo) {
 	if (states.size() == 0) {
+		std::cout << "noState!" << std::endl;
 		return;
 	} else {
+		std::cout << "Added obj" << std::endl;
 		states[currState]->addObj(bo);
 		return;
 	}
@@ -73,6 +75,14 @@ int Engine::countStates() {
 
 void Engine::setShowCollisions(bool show) {
 	showCollisions = show;
+}
+
+int Engine::countStateObjs() {
+	if (states.size() == 0) {
+		return 0;
+	}
+
+	return states[currState]->countObjs();
 }
 
 //Private methods

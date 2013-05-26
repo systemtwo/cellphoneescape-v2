@@ -5,6 +5,9 @@
 
 class Square : public BaseObj {
 	public:
+		static const int w = 10;
+		static const int h = 10;
+
 		Square (int, int);
 		void update (float dt);
 		void draw(sf::RenderWindow*);
@@ -12,7 +15,7 @@ class Square : public BaseObj {
 		std::vector<BoundingBox> getBoundingBoxes();
 	private:
 		sf::RectangleShape rect;
-		float x, y, w, h;
+		float x, y;
 		
 };
 
