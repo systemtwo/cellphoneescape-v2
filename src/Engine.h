@@ -17,7 +17,7 @@ class Engine {
 		void setState(int);
 		int findState(std::string);
 		void addObj (BaseObj*);
-		int countObjs();
+		int countStates();
 
 
 
@@ -29,5 +29,6 @@ class Engine {
 		int currState;
 
 		Engine();
+		void processCollisions();
 };
 #endif

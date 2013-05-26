@@ -21,15 +21,27 @@ void State::update(float dt) {
 	return;
 }
 
+std::string State::getName() {
+	return name;
+}
+
 void State::addObj(BaseObj* bo) {
 	objs.push_back(bo);
 	return;
 }
 
-std::string State::getName() {
-	return name;
+int State::countObjs() {
+	return objs.size();
 }
 	
+BaseObj* State::getObj(int position) {
+	return objs[position];
+}
+
+std::vector <BaseObj*>& State::getAllObjs() {
+	// Should this be read only?
+	return objs;
+}
 
 //Private methods
 void State::cleanDestroyedObj() {

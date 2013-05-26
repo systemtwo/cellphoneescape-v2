@@ -11,8 +11,11 @@ class State {
 		State();
 		virtual void draw(sf::RenderWindow*);
 		virtual void update(float dt);
-		virtual void addObj(BaseObj*);
 		std::string getName();
+		void addObj(BaseObj*);
+		int countObjs();
+		BaseObj* getObj(int);
+		std::vector<BaseObj*>& getAllObjs();
 		
 	protected:
 		std::vector <BaseObj*> objs;

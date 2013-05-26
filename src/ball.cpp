@@ -38,3 +38,13 @@ void Ball::update(float dt) {
 	return;
 }
 
+std::vector<BoundingBox> Ball::getBoundingBoxes() {
+	std::vector<BoundingBox> v;
+	v.push_back(BoundingBox(x, y, 10, 10));
+	return v;
+}
+
+void Ball::onCollide(BaseObj* obj, Direction dir) {
+	std::cout << dir << std::endl;
+}
+
