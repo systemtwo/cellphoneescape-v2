@@ -18,6 +18,7 @@ class Engine {
 		int findState(std::string);
 		void addObj (BaseObj*);
 		int countStates();
+		void setShowCollisions(bool);
 
 
 
@@ -27,8 +28,11 @@ class Engine {
 		sf::Clock clock; //the timer
 		std::vector<State* > states;
 		int currState;
+		bool showCollisions;
+		std::vector<BoundingBox> collisions;
 
 		Engine();
 		void processCollisions();
+		void drawCollisions(sf::RenderWindow*);
 };
 #endif

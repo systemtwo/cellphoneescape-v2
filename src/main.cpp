@@ -10,6 +10,7 @@
 int main() {
 	sf::RenderWindow window(sf::VideoMode(800, 600, 32), "Cell Phone Escape");
 	Engine& eng = Engine::getInstance();
+	eng.setShowCollisions(true);
 
 
 	State* gameState = new GameState();

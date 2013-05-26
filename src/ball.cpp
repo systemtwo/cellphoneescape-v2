@@ -9,10 +9,14 @@ Ball::Ball() {
 void Ball::draw(sf::RenderWindow* window) {
 	window->draw(circle);
 	//Debug (Draw bounding box)
+	/*
 	sf::RectangleShape r(sf::Vector2f(10,10));
 	r.setPosition(x,y);
 	r.setFillColor(sf::Color(255,0,0,128));
 	window->draw(r);
+	r.setPosition(x+20,y+20);
+	window->draw(r);
+	*/
 	//End debug
 
 }
@@ -48,6 +52,8 @@ void Ball::update(float dt) {
 std::vector<BoundingBox> Ball::getBoundingBoxes() {
 	std::vector<BoundingBox> v;
 	v.push_back(BoundingBox(x, y, 10, 10));
+	v.push_back(BoundingBox(x+20, y+20, 10, 10));
+
 	return v;
 }
 

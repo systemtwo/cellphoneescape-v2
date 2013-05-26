@@ -45,9 +45,12 @@ void Engine::draw(sf::RenderWindow* window) {
 	}
 	//Sort by zlevel then draw
 	//^ is now state responsibility
-	
-
 	states[currState]->draw(window);
+
+	//Show collision if set
+	if (showCollisions) {
+		drawCollisions(window);
+	}
 	
 	
 	//Reset the clock
@@ -56,7 +59,27 @@ void Engine::draw(sf::RenderWindow* window) {
 	return;
 }
 
+
+void Engine::update() {
+	processCollisions();
+
+	states[currState]->update(dt.asSeconds());
+	return;
+}
+
+int Engine::countStates() {
+	return states.size();
+}
+
+void Engine::setShowCollisions(bool show) {
+	showCollisions = show;
+}
+
+//Private methods
+
 void Engine::processCollisions() {
+	//Reset showCollisions collisions vector to nothing
+	collisions.erase(collisions.begin(), collisions.end());
 	for (int i = 0; i < states[currState]->countObjs(); i++) {
 		for (int j = (i+1); j < states[currState]->countObjs(); j++) {
 			BaseObj* a = states[currState]->getObj(i);
@@ -71,20 +94,28 @@ void Engine::processCollisions() {
 						//LEFT
 						a->onCollide(b, LEFT);
 						b->onCollide(a, RIGHT);
+						collisions.push_back(aa);
+						collisions.push_back(bb);
 					} else if ((bb.x < (aa.x+aa.w)) && ((bb.x+bb.w) > (aa.x+aa.w)) && (bb.y < (aa.y+aa.h)) && ((bb.y+bb.h) > (aa.y))) {
 						//right
 						a->onCollide(b, RIGHT);
 						b->onCollide(a, LEFT);
+						collisions.push_back(aa);
+						collisions.push_back(bb);
 					}
 
 					if (((bb.y+bb.h) > aa.y) && (bb.y < aa.y) && (bb.x < (aa.x+aa.w)) && ((bb.x+bb.w)> (aa.x))) {
 						//up
 						a->onCollide(b, UP);
 						b->onCollide(a, DOWN);
+						collisions.push_back(aa);
+						collisions.push_back(bb);
 					} else if (((bb.y) < (aa.y+aa.h)) && ((bb.y+bb.h) > (aa.y+aa.h)) && (bb.x < (aa.x+aa.w)) && ((bb.x+bb.w)> (aa.x))) {
 						//down
 						a->onCollide(b, DOWN);
 						b->onCollide(a, UP);
+						collisions.push_back(aa);
+						collisions.push_back(bb);
 					}
 				}
 			}
@@ -92,17 +123,16 @@ void Engine::processCollisions() {
 	}
 	return;
 }
-			
 
-void Engine::update() {
-	processCollisions();
-
-	states[currState]->update(dt.asSeconds());
-	return;
+void Engine::drawCollisions(sf::RenderWindow* window) {
+	for (int i = 0; i < collisions.size(); i++) {
+		BoundingBox b = collisions[i];
+		sf::RectangleShape r(sf::Vector2f(b.w, b.h));
+		r.setFillColor(sf::Color(255,0,0,128));
+		r.setPosition(b.x, b.y);
+		window->draw(r);
+	}
 }
 
-	
-int Engine::countStates() {
-	return states.size();
-}
+
 
