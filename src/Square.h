@@ -5,8 +5,8 @@
 
 class Square : public BaseObj {
 	public:
-		static const int w = 10;
-		static const int h = 10;
+		static const int w = 30;
+		static const int h = 30;
 
 		Square (int, int);
 		void update (float dt);

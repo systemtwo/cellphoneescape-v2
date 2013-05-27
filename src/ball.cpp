@@ -59,6 +59,7 @@ std::vector<BoundingBox> Ball::getBoundingBoxes() {
 }
 
 void Ball::onCollide(BaseObj* obj, Direction dir) {
+	/*
 	switch (dir) {
 		case UP:
 			std::cout << "UP" << std::endl;
@@ -73,5 +74,6 @@ void Ball::onCollide(BaseObj* obj, Direction dir) {
 			std::cout << "LEFT" << std::endl;
 			break;
 	}
+	*/
 }
 
