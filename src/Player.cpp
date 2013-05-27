@@ -44,10 +44,11 @@ void Player::draw(sf::RenderWindow* window) {
 	return;
 }
 
-void Player::onCollide(BaseObj* obj, Direction d) {
+void Player::onCollide(BaseObj* obj, Direction d, float dist) {
 	if (d == DOWN) {
 		falling = false;
 		readyToJump = true;
+		y -= dist;
 	}
 
 	if (d == LEFT) {

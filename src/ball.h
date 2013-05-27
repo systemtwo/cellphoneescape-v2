@@ -9,7 +9,7 @@ class Ball : public BaseObj {
 		Ball();
 		void draw(sf::RenderWindow*);
 		void update(float);
-		void onCollide(BaseObj*, Direction);
+		void onCollide(BaseObj*, Direction, float dist);
 		std::vector <BoundingBox> getBoundingBoxes();
 	private:
 		sf::CircleShape circle;

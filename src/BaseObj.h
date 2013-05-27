@@ -6,8 +6,8 @@
 //Move this somewhere else
 class BoundingBox {
 	public:
-		BoundingBox(int, int, int, int);
-		int x, y, h, w;
+		BoundingBox(float, float, float, float);
+		float x, y, h, w;
 	private:
 };
 
@@ -20,7 +20,7 @@ class BaseObj {
 		BaseObj();
 		virtual void update(float dt);
 		virtual void draw(sf::RenderWindow*);
-		virtual void onCollide(BaseObj*, Direction);
+		virtual void onCollide(BaseObj*, Direction, float);
 		virtual std::vector<BoundingBox> getBoundingBoxes();
 	private:
 };

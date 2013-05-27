@@ -1,7 +1,7 @@
 #include "BaseObj.h"
 
 //Move this somewhere else
-BoundingBox::BoundingBox(int _x, int _y, int _w, int _h) {
+BoundingBox::BoundingBox(float _x, float _y, float _w, float _h) {
 	x = _x;
 	y = _y;
 	w = _w;
@@ -22,7 +22,7 @@ void BaseObj::draw(sf::RenderWindow* window) {
 	return;
 }
 
-void BaseObj::onCollide(BaseObj* b, Direction direction) {
+void BaseObj::onCollide(BaseObj* b, Direction direction, float dist) {
 	return;
 }
 

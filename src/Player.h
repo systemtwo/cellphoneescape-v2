@@ -7,7 +7,7 @@ class Player : public BaseObj {
 		Player(int, int);
 		void update(float);
 		void draw(sf::RenderWindow*);
-		void onCollide(BaseObj*, Direction);
+		void onCollide(BaseObj*, Direction, float);
 		std::vector<BoundingBox> getBoundingBoxes();
 	private:
 		sf::RectangleShape sprite;

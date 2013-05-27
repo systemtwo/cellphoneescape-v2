@@ -58,7 +58,7 @@ std::vector<BoundingBox> Ball::getBoundingBoxes() {
 	return v;
 }
 
-void Ball::onCollide(BaseObj* obj, Direction dir) {
+void Ball::onCollide(BaseObj* obj, Direction dir, float dist) {
 	/*
 	switch (dir) {
 		case UP:

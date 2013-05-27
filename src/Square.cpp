@@ -22,7 +22,7 @@ std::vector <BoundingBox> Square::getBoundingBoxes() {
 	return v;
 }
 
-void Square::onCollide(BaseObj* obj, Direction d) {
+void Square::onCollide(BaseObj* obj, Direction d, float dist) {
 	/*
 	switch (d) {
 		case UP:
