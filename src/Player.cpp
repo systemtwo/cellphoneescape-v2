@@ -8,6 +8,7 @@ Player::Player(int _x, int _y) {
 	yspeed = 0;
 	xspeed = 100;
 	gravity = 500;
+	name = "Player";
 	sprite.setSize(sf::Vector2f(w, h));
 	return;
 }

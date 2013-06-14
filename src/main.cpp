@@ -9,6 +9,8 @@
 
 int main() {
 	sf::RenderWindow window(sf::VideoMode(800, 600, 32), "Cell Phone Escape");
+	window.setVerticalSyncEnabled(true);
+	window.setFramerateLimit(60);
 	Engine& eng = Engine::getInstance();
 	eng.setShowCollisions(true);
 

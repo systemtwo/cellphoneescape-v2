@@ -63,6 +63,7 @@ void Engine::draw(sf::RenderWindow* window) {
 
 
 void Engine::update() {
+	std::cout << "Running at " << 1/dt.asSeconds() << "fps" << std::endl;
 	processCollisions();
 
 	states[currState]->update(dt.asSeconds());
@@ -83,6 +84,15 @@ int Engine::countStateObjs() {
 	}
 
 	return states[currState]->countObjs();
+}
+
+BaseObj* Engine::getObj(std::string name) {
+	for (int i = 0; i < countStateObjs(); i++) {
+		if (states[currState]->getObj(i)->getName().compare(name) == 0) {
+			return states[currState]->getObj(i);
+		}
+	}
+	return NULL;
 }
 
 //Private methods
@@ -109,7 +119,7 @@ void Engine::processCollisions() {
 					} else if ((bb.x < (aa.x+aa.w)) && ((bb.x+bb.w) > (aa.x+aa.w)) && (bb.y < (aa.y+aa.h)) && ((bb.y+bb.h) > (aa.y))) {
 						//right
 						a->onCollide(b, RIGHT, (aa.x+aa.w)-bb.x);
-						b->onCollide(a, LEFT, (aa.x+aa.x)-bb.x);
+						b->onCollide(a, LEFT, (aa.x+aa.w)-bb.x);
 						collisions.push_back(aa);
 						collisions.push_back(bb);
 					}

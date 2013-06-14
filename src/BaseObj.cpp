@@ -30,3 +30,7 @@ std::vector<BoundingBox> BaseObj::getBoundingBoxes() {
 	std::vector<BoundingBox> empty;
 	return empty;
 }
+
+std::string BaseObj::getName() {
+	return name;
+}

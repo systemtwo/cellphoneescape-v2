@@ -22,6 +22,8 @@ class BaseObj {
 		virtual void draw(sf::RenderWindow*);
 		virtual void onCollide(BaseObj*, Direction, float);
 		virtual std::vector<BoundingBox> getBoundingBoxes();
-	private:
+		virtual std::string getName();
+	protected:
+		std::string name;
 };
 #endif

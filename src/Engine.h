@@ -20,6 +20,7 @@ class Engine {
 		int countStates();
 		void setShowCollisions(bool);
 		int countStateObjs();
+		BaseObj* getObj(std::string);
 
 
 
