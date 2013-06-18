@@ -1,15 +1,26 @@
 #include "Player.h"
+bool Player::texLoaded = false;
+sf::Texture Player::tex;
 
 Player::Player(int _x, int _y) {
 	x = _x;
 	y = _y;
-	w = 16;
-	h = 32;
 	yspeed = 0;
 	xspeed = 100;
 	gravity = 500;
 	name = "Player";
-	sprite.setSize(sf::Vector2f(w, h));
+	//sprite.setSize(sf::Vector2f(w, h));
+	collDown = 0;
+
+
+	if (!texLoaded) {
+		tex.loadFromFile("images/player.png");
+		texLoaded = true;
+	}
+
+	sprite.setTexture(tex, true);
+	w = sprite.getLocalBounds().width;
+	h = sprite.getLocalBounds().height;
 	return;
 }
 
@@ -28,14 +39,20 @@ void Player::update(float dt) {
 	y += yspeed*dt;
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::D) && !rightBlocked) {
 		x += dt*xspeed;
+		std::cout << "Go Right" << std::endl;
 	} else if (sf::Keyboard::isKeyPressed(sf::Keyboard::A) && !leftBlocked) {
 		x -= dt*xspeed;
+		std::cout << "Go Left" << std::endl;
 	}
 
 	sprite.setPosition(x, y);
-	sprite.setFillColor(sf::Color(0,255,255,255));
+	//sprite.setFillColor(sf::Color(0,255,255,255));
 	falling = true;
 	rightBlocked = leftBlocked = false;
+	//if (collDown > 0) {
+		//y -= collDown;
+		//collDown = 0;
+	//}
 	return;
 }
 
@@ -49,14 +66,29 @@ void Player::onCollide(BaseObj* obj, Direction d, float dist) {
 	if (d == DOWN) {
 		falling = false;
 		readyToJump = true;
-		y -= dist;
+		//collDown = dist;
+		std::cout << "Pop up" << std::endl;
+		y -= (dist);
 	}
 
 	if (d == LEFT) {
 		leftBlocked = true;
+		x += dist;
+		std::cout << "COL Left" << std::endl;
 	}
+
 	if (d == RIGHT) {
 		rightBlocked = true;
+		x -= dist;
+		std::cout << "COL Right" << std::endl;
+	}
+
+	if (d == UP) {
+		if (yspeed < 0) {
+			//Only push down if the player is moving up
+			y += dist;
+			yspeed = 0;
+		}
 	}
 	return;
 }

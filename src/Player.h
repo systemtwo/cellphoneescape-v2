@@ -10,7 +10,10 @@ class Player : public BaseObj {
 		void onCollide(BaseObj*, Direction, float);
 		std::vector<BoundingBox> getBoundingBoxes();
 	private:
-		sf::RectangleShape sprite;
+		sf::Sprite sprite;
+		static sf::Texture tex;
+		static bool texLoaded;
+
 		float x, y;
 		int w, h;
 		int gravity;
@@ -18,5 +21,6 @@ class Player : public BaseObj {
 		bool falling;
 		bool readyToJump;
 		bool leftBlocked, rightBlocked;
+		float collDown;
 };
 #endif

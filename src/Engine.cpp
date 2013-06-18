@@ -63,7 +63,8 @@ void Engine::draw(sf::RenderWindow* window) {
 
 
 void Engine::update() {
-	std::cout << "Running at " << 1/dt.asSeconds() << "fps" << std::endl;
+	std::cout << "Update begin" << std::endl;
+	//std::cout << "Running at " << 1/dt.asSeconds() << "fps" << std::endl;
 	processCollisions();
 
 	states[currState]->update(dt.asSeconds());
@@ -107,36 +108,47 @@ void Engine::processCollisions() {
 
 			//Compare all bounding boxes 
 			for (int ai = 0; ai < a->getBoundingBoxes().size(); ai++) {
-				BoundingBox aa = a->getBoundingBoxes()[ai];
+				//BoundingBox aa = a->getBoundingBoxes()[ai];
 				for (int bi = 0; bi < b->getBoundingBoxes().size(); bi++) {
+					BoundingBox aa = a->getBoundingBoxes()[ai];
 					BoundingBox bb = b->getBoundingBoxes()[bi];
-					if (((bb.x+bb.w) > (aa.x)) && ((bb.x) < (aa.x)) && (bb.y < (aa.y+aa.h)) && ((bb.y+bb.h) > (aa.y))) {
-						//LEFT
-						a->onCollide(b, LEFT, (bb.x+bb.w)-aa.x);
-						b->onCollide(a, RIGHT, (bb.x+bb.w)-aa.x);
-						collisions.push_back(aa);
-						collisions.push_back(bb);
-					} else if ((bb.x < (aa.x+aa.w)) && ((bb.x+bb.w) > (aa.x+aa.w)) && (bb.y < (aa.y+aa.h)) && ((bb.y+bb.h) > (aa.y))) {
-						//right
-						a->onCollide(b, RIGHT, (aa.x+aa.w)-bb.x);
-						b->onCollide(a, LEFT, (aa.x+aa.w)-bb.x);
-						collisions.push_back(aa);
-						collisions.push_back(bb);
-					}
-
 					if (((bb.y+bb.h) > aa.y) && (bb.y < aa.y) && (bb.x < (aa.x+aa.w)) && ((bb.x+bb.w)> (aa.x))) {
 						//up
 						a->onCollide(b, UP, (bb.y+bb.h)-aa.y);
 						b->onCollide(a, DOWN, (bb.y+bb.h)-aa.y);
 						collisions.push_back(aa);
 						collisions.push_back(bb);
-					} else if (((bb.y) < (aa.y+aa.h)) && ((bb.y+bb.h) > (aa.y+aa.h)) && (bb.x < (aa.x+aa.w)) && ((bb.x+bb.w)> (aa.x))) {
+						aa = a->getBoundingBoxes()[ai];
+						bb = b->getBoundingBoxes()[bi];
+					} if (((bb.y) < (aa.y+aa.h)) && ((bb.y+bb.h) > (aa.y+aa.h)) && (bb.x < (aa.x+aa.w)) && ((bb.x+bb.w)> (aa.x))) {
 						//down
 						a->onCollide(b, DOWN, (aa.y+aa.h)-bb.y);
 						b->onCollide(a, UP, (aa.y+aa.h)-bb.y);
 						collisions.push_back(aa);
 						collisions.push_back(bb);
+						aa = a->getBoundingBoxes()[ai];
+						bb = b->getBoundingBoxes()[bi];
 					}
+
+					if (((bb.x+bb.w) > (aa.x)) && ((bb.x) < (aa.x)) && (bb.y < (aa.y+aa.h)) && ((bb.y+bb.h) > (aa.y))) {
+						//LEFT
+						a->onCollide(b, LEFT, (bb.x+bb.w)-aa.x);
+						b->onCollide(a, RIGHT, (bb.x+bb.w)-aa.x);
+						collisions.push_back(aa);
+						collisions.push_back(bb);
+						aa = a->getBoundingBoxes()[ai];
+						bb = b->getBoundingBoxes()[bi];
+					} 
+					if ((bb.x < (aa.x+aa.w)) && ((bb.x+bb.w) > (aa.x+aa.w)) && (bb.y < (aa.y+aa.h)) && ((bb.y+bb.h) > (aa.y))) {
+						//right
+						a->onCollide(b, RIGHT, (aa.x+aa.w)-bb.x);
+						b->onCollide(a, LEFT, (aa.x+aa.w)-bb.x);
+						collisions.push_back(aa);
+						collisions.push_back(bb);
+						aa = a->getBoundingBoxes()[ai];
+						bb = b->getBoundingBoxes()[bi];
+					}
+
 				}
 			}
 		}
